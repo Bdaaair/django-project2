@@ -1,21 +1,22 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
-
+User = get_user_model()
+class Genre(models.Model):
+    name = models.CharField(max_length=30)
+    
 # Create your models here.
-class Movies_Model(models.Model):
+class Movie(models.Model):
     name = models.CharField(max_length=150)
     actors = models.CharField(max_length=100)
     release_date = models.DateField()
-    
-class Watchlist_Model(models.Model):
-    movies = models.ManyToOneRel(Movies_Model, on_delete=models.CASCADE,related_name="watchlists")
+    movie = models.ForeignKey(Genre, on_delete=models.CASCADE,related_name="movies")
 
-class Genre_Model(models.Model):
-    name = models.CharField(max_length=30)
+class Watchlist(models.Model):
+    movies = models.ForeignKey(Movie, on_delete=models.CASCADE,related_name="watchlists")
 
-class Rating_Reviews(models.Model):
-    reviws_field = models.TextField()
-    
-
+class Review(models.Model):
+    review = models.TextField()
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE,related_name="ratings")
+    user = models.ForeignKey(User, on_delete=models.CASCADE,related_name="user reviews")
 
