@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from rest_framework.generics import ListAPIView
-from .models import Movies_Model,Watchlist_Model,Genre_Model,Rating_Reviews
+from rest_framework.generics import ListAPIView, CreateAPIView
+from .models import Movie, Watchlist, Review
+from .serializers import CreateMovieList
 
 
-# Create your views here.
+class CreateView(CreateAPIView):
+    serializer_class = CreateMovieList
 
-
-class MoviesView(ListAPIView):
-    queryset = Movies_Model.objects.all()
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)

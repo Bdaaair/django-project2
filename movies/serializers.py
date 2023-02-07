@@ -1,7 +1,9 @@
 from rest_framework import serializers
 from .models import Movie
 
-class ArticleListSerializer(serializers.ModelSerializer):
+
+class CreateMovieList(serializers.ModelSerializer):
     class Meta:
         model = Movie
-        fields = ['id', 'actors', 'genre','release_date','rating','reviews']
+        fields = ['id','name', 'actors', 'release_date', 'genre']
+        
