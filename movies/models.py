@@ -9,7 +9,7 @@ class Movies_Model(models.Model):
     release_date = models.DateField()
     
 class Watchlist_Model(models.Model):
-    name = models.CharField(max_length=30)
+    movies = models.ManyToOneRel(Movies_Model, on_delete=models.CASCADE,related_name="watchlists")
 
 class Genre_Model(models.Model):
     name = models.CharField(max_length=30)
