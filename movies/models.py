@@ -18,5 +18,5 @@ class Watchlist(models.Model):
 class Review(models.Model):
     review = models.TextField()
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE,related_name="ratings")
-    user = models.ForeignKey(User, on_delete=models.CASCADE,related_name="user reviews")
+    user = models.ForeignKey(User, on_delete=models.CASCADE,related_name="user_reviews")
 
