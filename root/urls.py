@@ -16,12 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from users.views import UserCreateAPIView, UserLoginAPIView
-from movies.views import CreateView
+from movies.views import CreateMovieListView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/register/', UserCreateAPIView.as_view(),name="api_register"),   
     path('api/login/',UserLoginAPIView.as_view(),name="api_login"),
-    path('api/movie/create/', CreateView.as_view(),name="api_createmovie") 
+    path('api/movie/create/', CreateMovieListView.as_view(),name="api_createmovie"), 
 ]
