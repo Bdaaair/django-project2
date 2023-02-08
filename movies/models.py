@@ -10,7 +10,8 @@ class Movie(models.Model):
     name = models.CharField(max_length=150)
     actors = models.CharField(max_length=100)
     release_date = models.DateField()
-    movie = models.ForeignKey(Genre, on_delete=models.CASCADE,related_name="movies")
+    genre = models.ForeignKey(Genre, on_delete=models.CASCADE,related_name="movies")
+    user = models.ForeignKey(User, on_delete=models.CASCADE,related_name="movie_users")
 
 class Watchlist(models.Model):
     movies = models.ForeignKey(Movie, on_delete=models.CASCADE,related_name="watchlists")

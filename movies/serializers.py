@@ -3,7 +3,7 @@ from .models import Movie, Watchlist, Review, Genre
 
 
 class CreateMovieListserializer(serializers.ModelSerializer):
-    user = PrimaryKeyRelatedField(read_only=True)
+    user = serializers.PrimaryKeyRelatedField(read_only=True)
     class Meta:
         model = Movie
         fields = ['id','user','name', 'actors', 'release_date', 'genre']

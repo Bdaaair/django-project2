@@ -26,5 +26,5 @@ urlpatterns = [
     path('api/movie/create/', CreateMovieListView.as_view(),name="api_createmovie"), 
     path('api/watchlist/create/', Createwatchlistview.as_view(),name="api_watchlist" ),
     path('api/review/create/', CreateReviewview.as_view(), name="api_review" ),
-    path('api/genr/create/', CreatGenreListview.as_view(), name= "api_genre"),
+    path('api/genre/create/', CreatGenreListview.as_view(), name= "api_genre"),
 ]
