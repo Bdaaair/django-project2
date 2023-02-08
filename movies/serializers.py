@@ -1,11 +1,12 @@
 from rest_framework import serializers
-from .models import Movie, Watchlist, Review
+from .models import Movie, Watchlist, Review, Genre
 
 
 class CreateMovieListserializer(serializers.ModelSerializer):
+    user = PrimaryKeyRelatedField(read_only=True)
     class Meta:
         model = Movie
-        fields = ['id','name', 'actors', 'release_date', 'genre']
+        fields = ['id','user','name', 'actors', 'release_date', 'genre']
 
 class CreatWatchListserializer(serializers.ModelSerializer):
     class Meta:
@@ -16,3 +17,9 @@ class CreatReviewListserializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = ['review', 'movie', 'user']
+
+
+class CreatGenreListserializer(serializers.ModelSerializer):
+    class Meta:
+        model = Genre
+        fields = ['name']
